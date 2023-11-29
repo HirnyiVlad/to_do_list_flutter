@@ -22,13 +22,14 @@ class HomePage extends StatelessWidget {
               children: [
                 Expanded(
                     child: TextField(
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                   ),
                   controller: viewmodel.textEditingController,
+                  focusNode: viewmodel.focusNode,
                   decoration: InputDecoration(
                       hintText: 'Enter a note',
-                      focusedBorder: UnderlineInputBorder(
+                      focusedBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.white),
                       ),
                       hintStyle: TextStyle(color: Colors.grey[500])),
@@ -39,6 +40,7 @@ class HomePage extends StatelessWidget {
                         ? null
                         : () {
                             viewmodel.addNote();
+                            viewmodel.focusNode.unfocus();
                           },
                     style: ButtonStyle(
                       side: MaterialStateProperty.resolveWith<BorderSide>(

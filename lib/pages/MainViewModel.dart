@@ -4,8 +4,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 class MainViewModel extends ChangeNotifier{
   TextEditingController _textEditingController = TextEditingController();
   List<String> _notes = [];
+  FocusNode _focusNode = FocusNode();
+
   MainViewModel(){
     _loadNotes();
+    _focusNode = FocusNode();
   }
 
   List<String> get notes => _notes;
@@ -40,4 +43,5 @@ class MainViewModel extends ChangeNotifier{
   }
 
   TextEditingController get textEditingController => _textEditingController;
+  FocusNode get focusNode => _focusNode;
 }
